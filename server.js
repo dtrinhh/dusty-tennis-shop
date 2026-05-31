@@ -4,11 +4,15 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
+// Import Database connection components
+import { setupDatabase, testConnection } from './src/models/setup.js';
+
 // Session related imports
 import session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
 import { caCert } from './src/models/db.js';
 import { startSessionCleanup } from './src/utils/session-cleanup.js';
+
 
 /**
  * Declare Important Variables
@@ -129,5 +133,11 @@ app.get('/products', (req, res) => {
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
+    console.log(`Server is running on http://127.0.0.1:${PORT}`);
+});
+
+app.listen(PORT, async () => {
+    await setupDatabase();
+    await testConnection();
     console.log(`Server is running on http://127.0.0.1:${PORT}`);
 });
