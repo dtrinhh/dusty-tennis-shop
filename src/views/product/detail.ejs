@@ -1,9 +1,11 @@
 <%- include('../partials/header') %>
 <main>
-    <!-- <div class="string-profile"> -->
+    <!-- Heading of Brand and Name of string -->
+    <div class="string-profile">
         <h1><%= string.brand %> <%= string.name %></h1>
-    <!-- </div> -->
+    </div>
     
+    <!-- Detailed information about string -->
     <div class="string-information">
         <p><strong>Brand:</strong> <%= string.brand %></p>
         <p><strong>Material:</strong> <%= string.material %></p>
@@ -12,8 +14,61 @@
         <p><strong>In Stock:</strong> <%= string.stockQuantity %></p>
         <p><strong>Description:</strong> <%= string.description %></p>
     </div>
-    <!-- <div class="navigation"> -->
+
+    <!-- String rating -->
+    <div class="string-rating">
+        <h2>Average Rating</h2>
+        <% if (averageRating > 0) { %>
+            <p><%= averageRating %> / 5 stars</p>
+        <% } else { %>
+            <p>No ratings yet</p>
+        <% } %>
+    </div>
+
+    <!-- String Reviews -->
+    <div class="string-reviews">
+        <h2>Reviews</h2>
+        <% if (reviews.length === 0) { %>
+            <p>No reviews yet. Be the first to leave one!</p>
+        <% } else { %>
+            <% reviews.forEach(review => { %>
+                <div>
+                    <p><strong><%= review.reviewerName %></strong></p>
+                    <p>Rating: <%= review.rating %> / 5</p>
+                    <p><%= review.reviewText %></p>
+                    <p><small><%= review.createdAt.toLocaleDateString() %></small></p>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+    <!-- Leave a Review form -->
+    <div class="review-form">
+        <h2>Leave a Review</h2>
+        <% if (isLoggedIn) { %>
+            <form action="/products/<%= string.id %>/review" method="POST">
+                <label for="rating">Rating (1-5)</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Select a rating</option>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Average</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Terrible</option>
+                </select>
+                <label for="reviewText">Review</label>
+                <textarea id="reviewText" name="reviewText" rows="4" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+        <% } else { %>
+            <p>Please <a href="/login">login</a> to leave a review.</p>
+        <% } %>
+    </div>
+
+    <!-- Back button to return to all products page -->
+    <div class="navigation">
         <p><a href="/products">&larr; Back to Strings</a></p>
-    <!-- </div> -->
+    </div>
+
 </main>
 <%- include('../partials/footer') %>

@@ -1,4 +1,6 @@
 import { getAllStrings, getStringById } from '../../models/product/products.js';
+import { getReviewsByStringId, getAverageRating } from '../../models/reviews/reviews.js';
+
 
 /**
  * Route handler for String Products list page
@@ -27,9 +29,14 @@ const productDetailPage = async (req, res, next) => {
             return next(err);
         }
 
+        const reviews = await getReviewsByStringId(stringId);
+        const averageRating = await getAverageRating(stringId);
+
         res.render('product/detail', {
             title: `${string.brand} - ${string.name}`,
-            string: string
+            string: string,
+            reviews: reviews,
+            averageRating: averageRating
         });
 };
 
