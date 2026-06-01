@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<main>
+    <!-- <div class="string-profile"> -->
+        <h1><%= string.brand %> <%= string.name %></h1>
+    <!-- </div> -->
+    
+    <div class="string-information">
+        <p><strong>Brand:</strong> <%= string.brand %></p>
+        <p><strong>Material:</strong> <%= string.material %></p>
+        <p><strong>Color:</strong> <%= string.color %></p>
+        <p><strong>Price:</strong> $<%= string.price %></p>
+        <p><strong>In Stock:</strong> <%= string.stockQuantity %></p>
+        <p><strong>Description:</strong> <%= string.description %></p>
+    </div>
+    <!-- <div class="navigation"> -->
+        <p><a href="/products">&larr; Back to Strings</a></p>
+    <!-- </div> -->
+</main>
+<%- include('../partials/footer') %>

@@ -29,8 +29,7 @@ const productDetailPage = async (req, res, next) => {
 
         res.render('product/detail', {
             title: `${string.brand} - ${string.name}`,
-            string: string,
-            currentSort: sortBy
+            string: string
         });
 };
 

@@ -96,6 +96,6 @@ const getStringsByBrand = async (brand) => {
 /**
  * Wrapper functions for cleaner API - these make the code more readable at the call site.
  */
-const getStringById = (stringId) => getString(id);
+const getStringById = (stringId) => getString(stringId);
 
 export { getAllStrings, getStringById, getStringsByBrand };
