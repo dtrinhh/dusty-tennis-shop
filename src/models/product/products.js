@@ -98,4 +98,50 @@ const getStringsByBrand = async (brand) => {
  */
 const getStringById = (stringId) => getString(stringId);
 
-export { getAllStrings, getStringById, getStringsByBrand };
+
+// Get the most recently added strings
+const getNewestStrings = async (limit = 3) => {
+    const query = `
+        SELECT s.id, s.brand, s.name, s.material, s.color, s.price,
+               s.description, s.stock_quantity
+        FROM strings s
+        ORDER BY s.created_at DESC
+        LIMIT $1
+    `;
+    const result = await db.query(query, [limit]);
+    return result.rows.map(string => ({
+        id: string.id,
+        brand: string.brand,
+        name: string.name,
+        material: string.material,
+        color: string.color,
+        price: string.price,
+        description: string.description,
+        stockQuantity: string.stock_quantity
+    }));
+};
+
+
+// Get random strings, but used as a "Try these string next" section
+const getRandomStrings = async (limit = 3) => {
+    const query = `
+        SELECT s.id, s.brand, s.name, s.material, s.color, s.price,
+               s.description, s.stock_quantity
+        FROM strings s
+        ORDER BY RANDOM()
+        LIMIT $1
+    `;
+    const result = await db.query(query, [limit]);
+    return result.rows.map(string => ({
+        id: string.id,
+        brand: string.brand,
+        name: string.name,
+        material: string.material,
+        color: string.color,
+        price: string.price,
+        description: string.description,
+        stockQuantity: string.stock_quantity
+    }));
+};
+
+export { getAllStrings, getStringById, getStringsByBrand, getNewestStrings, getRandomStrings };
