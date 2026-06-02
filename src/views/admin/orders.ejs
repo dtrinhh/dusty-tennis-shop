@@ -1,0 +1,49 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>Manage Orders</h1>
+    <a href="/admin">← Back to Admin Dashboard</a>
+
+    <% if (orders.length === 0) { %>
+        <p>No orders yet.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order #</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Items</th>
+                    <th>Special Request</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order => { %>
+                    <tr>
+                        <td><%= order.id %></td>
+                        <td><%= order.userName %></td>
+                        <td>$<%= order.totalPrice %></td>
+                        <td><%= order.itemCount %></td>
+                        <td><%= order.specialRequest || 'None' %></td>
+                        <td><%= order.status %></td>
+                        <td><%= order.createdAt.toLocaleDateString() %></td>
+                        <td>
+                            <form action="/admin/orders/<%= order.id %>/status" method="POST">
+                                <select name="status">
+                                    <option value="ordered" <%= order.status === 'ordered' ? 'selected' : '' %>>Ordered</option>
+                                    <option value="processing" <%= order.status === 'processing' ? 'selected' : '' %>>Processing</option>
+                                    <option value="shipped" <%= order.status === 'shipped' ? 'selected' : '' %>>Shipped</option>
+                                    <option value="completed" <%= order.status === 'completed' ? 'selected' : '' %>>Completed</option>
+                                </select>
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</main>
+<%- include('../partials/footer') %>

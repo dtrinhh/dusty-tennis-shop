@@ -35,7 +35,9 @@
 
                 <!-- Only visible when logged in -->
                 <% if (isLoggedIn && user) { %>
-                    <!-- <li><a href="/account"> Account </a></li> -->
+                    <% if (user.roleName === 'admin') { %>
+                        <li><a href="/admin">Admin Dashboard</a></li>
+                    <% } %>
                     <li><a href="/account"><%= user.name %></a></li>
                     <li><a href="/logout">Logout</a></li>
                 <!-- Only visible when NOT logged in -->

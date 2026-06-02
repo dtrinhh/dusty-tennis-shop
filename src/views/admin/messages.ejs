@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>Contact Messages</h1>
+    <a href="/admin">← Back to Admin Dashboard</a>
+
+    <% if (messages.length === 0) { %>
+        <p>No messages yet.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% messages.forEach(message => { %>
+                    <tr>
+                        <td><%= message.name %></td>
+                        <td><%= message.email %></td>
+                        <td><%= message.message %></td>
+                        <td><%= message.status %></td>
+                        <td><%= message.createdAt.toLocaleDateString() %></td>
+                        <td>
+                            <form action="/admin/messages/<%= message.id %>/status" method="POST">
+                                <select name="status">
+                                    <option value="received" <%= message.status === 'received' ? 'selected' : '' %>>Received</option>
+                                    <option value="replied" <%= message.status === 'replied' ? 'selected' : '' %>>Replied</option>
+                                    <option value="closed" <%= message.status === 'closed' ? 'selected' : '' %>>Closed</option>
+                                </select>
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</main>
+<%- include('../partials/footer') %>

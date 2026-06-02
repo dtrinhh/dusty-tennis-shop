@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+<main>
+    <h1><%= title %></h1>
+    <a href="/admin/products">← Back to Products</a>
+
+    <form action="/admin/products/<%= string ? string.id + '/edit' : 'add' %>" method="POST">
+        <label for="brand">Brand</label>
+        <input type="text" id="brand" name="brand" value="<%= string ? string.brand : '' %>" required>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%= string ? string.name : '' %>" required>
+
+        <label for="material">Material</label>
+        <input type="text" id="material" name="material" value="<%= string ? string.material : '' %>">
+
+        <label for="color">Color</label>
+        <input type="text" id="color" name="color" value="<%= string ? string.color : '' %>">
+
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" step="0.01" value="<%= string ? string.price : '' %>" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4"><%= string ? string.description : '' %></textarea>
+
+        <label for="stockQuantity">Stock Quantity</label>
+        <input type="number" id="stockQuantity" name="stockQuantity" value="<%= string ? string.stockQuantity : '' %>">
+
+        <button type="submit"><%= string ? 'Update Product' : 'Add Product' %></button>
+    </form>
+</main>
+<%- include('../partials/footer') %>

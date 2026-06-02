@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>Manage Products</h1>
+    <a href="/admin">← Back to Admin Dashboard</a>
+    <a href="/admin/products/add">Add New Product</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Name</th>
+                <th>Material</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% strings.forEach(string => { %>
+                <tr>
+                    <td><%= string.brand %></td>
+                    <td><%= string.name %></td>
+                    <td><%= string.material %></td>
+                    <td><%= string.color %></td>
+                    <td>$<%= string.price %></td>
+                    <td><%= string.stockQuantity %></td>
+                    <td>
+                        <a href="/admin/products/<%= string.id %>/edit">Edit</a>
+                        <form action="/admin/products/<%= string.id %>/delete" method="POST">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</main>
+<%- include('../partials/footer') %>

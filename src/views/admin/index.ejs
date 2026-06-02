@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>Admin Dashboard</h1>
+
+    <!-- Stats Overview -->
+    <div>
+        <h2>Overview</h2>
+        <div>
+            <div>
+                <h3><a href="/admin/users">Users</a></h3>
+                <p><%= stats.totalUsers %></p>
+            </div>
+            <div>
+                <h3><a href="/admin/products">Products</a></h3>
+                <p><%= stats.totalStrings %></p>
+            </div>
+            <div>
+                <h3><a href="/admin/orders">Orders</a></h3>
+                <p><%= stats.totalOrders %></p>
+            </div>
+            <div>
+                <h3><a href="/admin/messages">Unread Messages</a></h3>
+                <p><%= stats.unreadMessages %></p>
+            </div>
+            <div>
+                <h3><a href="/admin/reviews">Reviews</a></h3>
+                <p><%= stats.totalReviews %></p>
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('../partials/footer') %>
