@@ -3,7 +3,9 @@ import { homePage, aboutPage } from './index.js';
 import { productsPage, productDetailPage } from './product/products.js';
 import { processReview } from './reviews/reviews.js';
 import ContactRoutes from './forms/contact.js';
-
+import loginRoutes from './forms/login.js';
+import registrationRoutes from './forms/registration.js';
+import { processLogout } from './forms/login.js';
 // Create a new router instance
 const router = Router();
 
@@ -21,5 +23,10 @@ router.post('/products/:id/review', processReview)
 
 // Contact routes
 router.use('/contact', ContactRoutes)
+
+// Authentication-related routes at root level
+router.use('/register', registrationRoutes);
+router.use('/login', loginRoutes);
+router.get('/logout', processLogout);
 
 export default router;

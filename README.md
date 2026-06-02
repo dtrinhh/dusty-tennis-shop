@@ -31,10 +31,10 @@ ERD from PGAdmin showing the tables and relationships between each other for thi
 Email: Admin@dts.com
 
 ### Product Tester
-Email: Tester@dts.com
+Email: producttester@dts.com
 
 ### User
-Email: User@dts.com
+Email: testuser@dts.com
 
 ## 5. Known Limitations
 N/A

@@ -96,9 +96,9 @@ INSERT INTO roles (role_name, role_description) VALUES
 
 -- Seed test users
 INSERT INTO users (name, email, password, role_id) VALUES
-    ('Admin', 'admin@dts.com', 'P@$$w0rd!', 1),
-    ('Product Tester', 'Tester@dts.com', 'P@$$w0rd!', 2),
-    ('User', 'user@dts.com', 'P@$$w0rd!', 3);
+    ('Admin', 'admin@dts.com', '$2b$10$AFsad12JnebuWh8ANf05NeQ4g5xf0FAJcvyQ1DK1.0W67cmNOS0qW', 1),
+    ('Product Tester', 'producttester@dts.com', '$2b$10$AFsad12JnebuWh8ANf05NeQ4g5xf0FAJcvyQ1DK1.0W67cmNOS0qW', 2),
+    ('User', 'testuser@dts.com', '$2b$10$AFsad12JnebuWh8ANf05NeQ4g5xf0FAJcvyQ1DK1.0W67cmNOS0qW', 3);
 
 -- Seed string products
 INSERT INTO strings (brand, name, material, color, price, description, stock_quantity) VALUES
