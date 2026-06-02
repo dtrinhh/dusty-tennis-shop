@@ -9,12 +9,12 @@ const addLocalVariables = (req, res, next) => {
     res.locals.queryParams = { ...req.query };
     // Convenience variable for UI state based on session state
     res.locals.isLoggedIn = false;
+    res.locals.user = null;
     if (req.session && req.session.user) {
         res.locals.isLoggedIn = true;
+        res.locals.user = req.session.user;
     }
-    else {
-        res.locals.user = null;
-    }
+    
     // Continue to the next middleware or route handler
     next();
 };

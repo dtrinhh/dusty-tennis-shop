@@ -34,7 +34,9 @@
                 <li><a href="/contact">Contact</a></li>
 
                 <!-- Only visible when logged in -->
-                <% if (isLoggedIn) { %>
+                <% if (isLoggedIn && user) { %>
+                    <!-- <li><a href="/account"> Account </a></li> -->
+                    <li><a href="/account"><%= user.name %></a></li>
                     <li><a href="/logout">Logout</a></li>
                 <!-- Only visible when NOT logged in -->
                 <% } else { %>

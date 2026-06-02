@@ -6,6 +6,8 @@ import ContactRoutes from './forms/contact.js';
 import loginRoutes from './forms/login.js';
 import registrationRoutes from './forms/registration.js';
 import { processLogout } from './forms/login.js';
+import accountRoutes from './account/account.js';
+
 // Create a new router instance
 const router = Router();
 
@@ -28,5 +30,8 @@ router.use('/contact', ContactRoutes)
 router.use('/register', registrationRoutes);
 router.use('/login', loginRoutes);
 router.get('/logout', processLogout);
+
+// Account routes
+router.use('/account', accountRoutes);
 
 export default router;

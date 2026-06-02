@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>My Account</h1>
+
+    <!-- Profile Info -->
+    <div>
+        <h2>Profile</h2>
+        <p><strong>Name:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Role:</strong> <%= user.roleName %></p>
+    </div>
+
+    <!-- Order History -->
+    <div>
+        <h2>Order History</h2>
+        <% if (orders.length === 0) { %>
+            <p>You have not made any orders yet.</p>
+        <% } else { %>
+            <% orders.forEach(order => { %>
+                <div>
+                    <p><strong>Order #<%= order.id %></strong></p>
+                    <p>Status: <%= order.status %></p>
+                    <p>Total: $<%= order.totalPrice %></p>
+                    <p>Items: <%= order.itemCount %></p>
+                    <% if (order.specialRequest) { %>
+                        <p>Special Request: <%= order.specialRequest %></p>
+                    <% } %>
+                    <p><small>Placed: <%= order.createdAt.toLocaleDateString() %></small></p>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+    <!-- Reviews -->
+    <div>
+        <h2>My Reviews</h2>
+        <% if (reviews.length === 0) { %>
+            <p>You have not left any reviews yet. </p>
+        <% } else { %>
+            <% reviews.forEach(review => { %>
+                <div>
+                    <p><strong><a href="/products/<%= review.stringId %>"><%= review.stringBrand %> <%= review.stringName %></a></strong></p>
+                    <p>Rating: <%= review.rating %> / 5</p>
+                    <p><%= review.reviewText %></p>
+                    <p><small>Posted: <%= review.createdAt.toLocaleDateString() %></small></p>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+</main>
+<%- include('../partials/footer') %>
