@@ -30,6 +30,28 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/products">Products</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- Flash Messages -->
+    <% 
+        const errors = flash('error');
+        const successes = flash('success'); 
+    %>
+
+    <% if (errors.length > 0) { %>
+        <ul>
+            <% errors.forEach(error => { %>
+                <li><%= error %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    <% if (successes.length > 0) { %>
+        <ul>
+            <% successes.forEach(success => { %>
+                <li><%= success %></li>
+            <% }) %>
+        </ul>
+    <% } %>

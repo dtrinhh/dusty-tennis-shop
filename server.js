@@ -15,19 +15,24 @@ import { setupDatabase, testConnection } from './src/models/setup.js';
 import session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
 import { caCert } from './src/models/db.js';
-import { startSessionCleanup } from './src/utils/session-cleanup.js';
 
+// Import flash for flash messages via sessions
+import flash from './src/middleware/flash.js';
+
+// Import Cleaning system components
+import { startSessionCleanup } from './src/utils/session-cleanup.js';
 
 /**
  * Declare Important Variables
  */
 
-// Define the port number the server will listen on
-const NODE_ENV = process.env.NODE_ENV || 'production';
-const PORT = process.env.PORT || 3000;
-
+/**
+ * Server configuration
+ */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const NODE_ENV = process.env.NODE_ENV || 'production';
+const PORT = process.env.PORT || 3000;
 
 /**
  * Setup Express Server
@@ -64,6 +69,9 @@ app.use(session({
 
 // Global middleware (sets res.locals variables)
 app.use(addLocalVariables);
+
+// Flash message middleware (must come after session and global middleware)
+app.use(flash);
 
 // Start automatic session cleanup
 startSessionCleanup();
