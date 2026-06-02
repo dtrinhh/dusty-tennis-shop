@@ -106,6 +106,6 @@ INSERT INTO strings (brand, name, material, color, price, description, stock_qua
     ('Wilson', 'NXT', 'Multifilament', 'Natural', 14.00, 'Comfortable and powerful multifilament string', 40),
     ('Luxilon', 'ALU Power', 'Polyester', 'Silver', 21.50, 'Ultimate feel and control', 60),
     ('Toroline', 'O-Toro', 'Polyester', 'Orange', 15.00, 'Ultra-spin friendly co-poly', 50),
-    ('Head', 'Lynx', 'Polyester', 'Champagne', 12.99, 'Control to attack the ball with your most powerful strokes', 45);
+    ('Head', 'Lynx Tour', 'Polyester', 'Champagne', 12.99, 'Control to attack the ball with your most powerful strokes', 45);
 
 COMMIT;

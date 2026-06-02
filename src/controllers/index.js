@@ -1,4 +1,4 @@
-import { getNewestStrings, getRandomStrings } from "../models/product/products.js";
+import { getNewestStrings, getRandomStrings, getStringById } from "../models/product/products.js";
 
 // Route handlers for static pages
 const homePage = async (req, res) => {
@@ -11,9 +11,13 @@ const homePage = async (req, res) => {
         randomStrings: randomStrings
     });
 };
-const aboutPage = (req, res) => {
+const aboutPage = async (req, res) => {
+    const favoriteString = await getStringById(5);
+    
     res.render('about', {
-        title: 'About' });
+        title: 'About',
+        favoriteString: favoriteString
+    });
 };
 
 export { homePage, aboutPage };

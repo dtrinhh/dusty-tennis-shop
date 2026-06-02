@@ -1,6 +1,32 @@
 <%- include('partials/header') %>
 <main>
     <h1>About Dusty Tennis Shop</h1>
-    <p>We want to be the main supplier of tennis gear and equipment for all. </p>
+
+    <div>
+        <h2>Our Story</h2>
+        <p>
+            Dusty Tennis Shop was founded by a boy who grew up in the big city who wanted a more tight knit 
+            community around his favorite sport! We want to provide a marketplace for all to feel welcome and confidently purchase high quality tennis strings backed by the people. We welcome players of all 
+            levels to join our community in making a trusted source for your tennis string needs!
+            
+        </p>
+        <p>
+            We believe that the right string can transform your game. Whether you're just learning the game, 
+            a recreational player, or an elite level player, we can find the perfect string to take your game to 
+            the next level.
+        </p>
+        <p>
+            We have an in-house team of experienced playtesters who test every string we carry. They'll be providing
+            their honest reviews along side your guys reviews. So What are you waiting for, join our community 
+            providing genuine feedback on strings and send in suggestions of strings you want us to stock!
+        </p>
+    </div>
+
+    <div>
+        <h2>Current Favorite String</h2>
+        <p>My favorite string right now is <%= favoriteString.brand %> <%= favoriteString.name %>. I love it for
+        the feel and control it provides at an afforable price!</p>
+        <a href="/products/<%= favoriteString.id %>">Check it out here!</a>
+    </div>
 </main>
 <%- include('partials/footer') %>
