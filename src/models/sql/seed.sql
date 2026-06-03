@@ -88,6 +88,16 @@ CREATE TABLE contact_messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Create review responses table
+CREATE TABLE review_responses (
+    id SERIAL PRIMARY KEY,
+    review_id INTEGER REFERENCES reviews(id) ON DELETE CASCADE,
+    responder_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    response_text VARCHAR(500) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Seed roles
 INSERT INTO roles (role_name, role_description) VALUES
     ('admin', 'Full access permissions, user account read/write permissions, review read/write permissions, product read/write permissions'),

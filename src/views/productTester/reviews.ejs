@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>Manage Reviews</h1>
+    <a href="/producttesterdashboard">← Back to Dashboard</a>
+
+    <% if (reviews.length === 0) { %>
+        <p>No reviews yet.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Reviewer</th>
+                    <th>Product</th>
+                    <th>Rating</th>
+                    <th>Review</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% reviews.forEach(review => { %>
+                    <tr>
+                        <td><%= review.reviewerName %></td>
+                        <td>
+                            <a href="/products/<%= review.stringId %>">
+                                <%= review.stringBrand %> <%= review.stringName %>
+                            </a>
+                        </td>
+                        <td><%= review.rating %> / 5</td>
+                        <td><%= review.reviewText %></td>
+                        <td><%= review.createdAt.toLocaleDateString() %></td>
+                        <td>
+                            <% if (review.reviewerId === user.id) { %>
+                                <a href="/producttesterdashboard/reviews/<%= review.id %>/edit">Edit</a>
+                            <% } %>
+                            <form action="/producttesterdashboard/reviews/<%= review.id %>/respond" method="POST">
+                                <textarea name="responseText" rows="2" placeholder="Write a response..." required></textarea>
+                                <button type="submit">Respond</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</main>
+<%- include('../partials/footer') %>

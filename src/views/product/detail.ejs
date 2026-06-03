@@ -37,6 +37,20 @@
                     <p>Rating: <%= review.rating %> / 5</p>
                     <p><%= review.reviewText %></p>
                     <p><small><%= review.createdAt.toLocaleDateString() %></small></p>
+                    
+                    <!-- Review Responses -->
+                    <% if (review.responses && review.responses.length > 0) { %>
+                        <div>
+                            <h4>Responses from our team:</h4>
+                            <% review.responses.forEach(response => { %>
+                                <div>
+                                    <p><strong><%= response.responderName %></strong></p>
+                                    <p><%= response.responseText %></p>
+                                    <p><small><%= response.createdAt.toLocaleDateString() %></small></p>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } %>
                 </div>
             <% }) %>
         <% } %>

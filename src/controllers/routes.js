@@ -8,6 +8,7 @@ import registrationRoutes from './forms/registration.js';
 import { processLogout } from './forms/login.js';
 import accountRoutes from './account/account.js';
 import adminRoutes from './admin/admin.js';
+import productTesterRoutes from './productTester/productTester.js';
 
 // Create a new router instance
 const router = Router();
@@ -37,5 +38,8 @@ router.use('/account', accountRoutes);
 
 // Admin routes
 router.use('/admin', adminRoutes);
+
+// ProductTester routes
+router.use('/producttesterdashboard', productTesterRoutes);
 
 export default router;
