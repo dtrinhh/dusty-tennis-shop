@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>Edit Review</h1>
+    <a href="/products/<%= review.string_id %>">← Back to Product</a>
+
+    <p><strong>Product:</strong> <%= review.string_brand %> <%= review.string_name %></p>
+
+    <form action="/reviews/<%= review.id %>/edit" method="POST">
+        <label for="rating">Rating (1-5)</label>
+        <select id="rating" name="rating" required>
+            <option value="5" <%= review.item_rating === 5 ? 'selected' : '' %>>5 - Excellent</option>
+            <option value="4" <%= review.item_rating === 4 ? 'selected' : '' %>>4 - Good</option>
+            <option value="3" <%= review.item_rating === 3 ? 'selected' : '' %>>3 - Average</option>
+            <option value="2" <%= review.item_rating === 2 ? 'selected' : '' %>>2 - Poor</option>
+            <option value="1" <%= review.item_rating === 1 ? 'selected' : '' %>>1 - Terrible</option>
+        </select>
+
+        <label for="reviewText">Review</label>
+        <textarea id="reviewText" name="reviewText" rows="4" required><%= review.review_text %></textarea>
+
+        <button type="submit">Update Review</button>
+    </form>
+</main>
+<%- include('../partials/footer') %>

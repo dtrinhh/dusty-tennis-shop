@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     const reviews = await getAllReviews();
     res.render('productTester/index', {
         title: 'Product Tester Dashboard',
-        reviews
+        reviews : reviews
     });
 });
 
@@ -26,7 +26,7 @@ router.get('/reviews', async (req, res) => {
     const reviews = await getAllReviews();
     res.render('productTester/reviews', {
         title: 'Manage Reviews',
-        reviews
+        reviews : reviews
     });
 });
 
@@ -48,9 +48,9 @@ router.get('/reviews/:id/edit', async (req, res) => {
         return res.redirect('/producttesterdashboard/reviews');
     }
 
-    res.render('productTester/edit-review', {
+    res.render('reviews/edit', {
         title: 'Edit Review',
-        review
+        review: review
     });
 });
 

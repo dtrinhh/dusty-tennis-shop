@@ -37,7 +37,17 @@
                     <p>Rating: <%= review.rating %> / 5</p>
                     <p><%= review.reviewText %></p>
                     <p><small><%= review.createdAt.toLocaleDateString() %></small></p>
-                    
+
+                    <!-- Edit/Delete buttons -->
+                    <% if (isLoggedIn && user) { %>
+                        <% if (review.reviewerId === user.id || user.roleName === 'admin') { %>
+                            <a href="/reviews/<%= review.id %>/edit">Edit</a>
+                            <form action="/reviews/<%= review.id %>/delete" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        <% } %>
+                    <% } %>
+
                     <!-- Review Responses -->
                     <% if (review.responses && review.responses.length > 0) { %>
                         <div>

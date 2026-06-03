@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { homePage, aboutPage } from './index.js';
 import { productsPage, productDetailPage } from './product/products.js';
-import { processReview } from './reviews/reviews.js';
+import { processReview, processEditReview, processDeleteReview, showEditReviewForm } from './reviews/reviews.js';
 import ContactRoutes from './forms/contact.js';
 import loginRoutes from './forms/login.js';
 import registrationRoutes from './forms/registration.js';
@@ -10,6 +10,7 @@ import accountRoutes from './account/account.js';
 import adminRoutes from './admin/admin.js';
 import productTesterRoutes from './productTester/productTester.js';
 import cartRoutes from './cart/cart.js';
+import { requireLogin } from '../middleware/auth.js';
 
 // Create a new router instance
 const router = Router();
@@ -45,5 +46,11 @@ router.use('/producttesterdashboard', productTesterRoutes);
 
 // Cart routes
 router.use('/cart', cartRoutes);
+
+// Review routes
+router.post('/products/:id/review', processReview);
+router.get('/reviews/:reviewId/edit', requireLogin, showEditReviewForm);
+router.post('/reviews/:reviewId/edit', requireLogin, processEditReview);
+router.post('/reviews/:reviewId/delete', requireLogin, processDeleteReview);
 
 export default router;
