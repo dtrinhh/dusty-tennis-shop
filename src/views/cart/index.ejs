@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>My Cart</h1>
+
+    <% if (cart.length === 0) { %>
+        <p>Your cart is empty. <a href="/products">Shop now!</a></p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cart.forEach(item => { %>
+                    <tr>
+                        <td><%= item.brand %> <%= item.name %></td>
+                        <td>$<%= item.price %></td>
+                        <td>
+                            <form action="/cart/update/<%= item.id %>" method="POST">
+                                <input type="number" name="quantity" value="<%= item.quantity %>" min="1" max="99">
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                        <td>$<%= (item.price * item.quantity).toFixed(2) %></td>
+                        <td>
+                            <form action="/cart/remove/<%= item.id %>" method="POST">
+                                <button type="submit">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <p><strong>Total: $<%= total %></strong></p>
+        <a href="/products">Continue Shopping</a>
+        <a href="/cart/checkout">Proceed to Checkout</a>
+    <% } %>
+</main>
+<%- include('../partials/footer') %>

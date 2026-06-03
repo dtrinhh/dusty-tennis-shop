@@ -9,6 +9,7 @@ import { processLogout } from './forms/login.js';
 import accountRoutes from './account/account.js';
 import adminRoutes from './admin/admin.js';
 import productTesterRoutes from './productTester/productTester.js';
+import cartRoutes from './cart/cart.js';
 
 // Create a new router instance
 const router = Router();
@@ -41,5 +42,8 @@ router.use('/admin', adminRoutes);
 
 // ProductTester routes
 router.use('/producttesterdashboard', productTesterRoutes);
+
+// Cart routes
+router.use('/cart', cartRoutes);
 
 export default router;

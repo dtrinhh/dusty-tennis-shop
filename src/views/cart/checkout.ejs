@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+<main>
+    <h1>Checkout</h1>
+
+    <!-- Order Summary -->
+    <div>
+        <h2>Order Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cart.forEach(item => { %>
+                    <tr>
+                        <td><%= item.brand %> <%= item.name %></td>
+                        <td>$<%= item.price %></td>
+                        <td><%= item.quantity %></td>
+                        <td>$<%= (item.price * item.quantity).toFixed(2) %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <p><strong>Total: $<%= total %></strong></p>
+    </div>
+
+    <!-- Checkout Form -->
+    <form action="/cart/checkout" method="POST">
+        <label for="specialRequest">Special Request (optional)</label>
+        <textarea id="specialRequest" name="specialRequest" rows="3" 
+            placeholder="Any special requests or notes for your order..."></textarea>
+        <button type="submit">Place Order</button>
+    </form>
+
+    <a href="/cart">← Back to Cart</a>
+</main>
+<%- include('../partials/footer') %>
