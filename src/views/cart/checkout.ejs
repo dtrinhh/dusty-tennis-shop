@@ -3,7 +3,7 @@
     <h1>Checkout</h1>
 
     <!-- Order Summary -->
-    <div>
+    <div class="account-section">
         <h2>Order Summary</h2>
         <table>
             <thead>
@@ -25,17 +25,21 @@
                 <% }) %>
             </tbody>
         </table>
-        <p><strong>Total: $<%= total %></strong></p>
+        <p class="cart-total">Total: $<%= total %></p>
     </div>
 
     <!-- Checkout Form -->
-    <form action="/cart/checkout" method="POST">
-        <label for="specialRequest">Special Request (optional)</label>
-        <textarea id="specialRequest" name="specialRequest" rows="3" 
-            placeholder="Any special requests or notes for your order..."></textarea>
-        <button type="submit">Place Order</button>
-    </form>
+    <div class="contact-form">
+        <form action="/cart/checkout" method="POST">
+            <div class="form-group">
+                <label for="specialRequest">Special Request (optional)</label>
+                <textarea id="specialRequest" name="specialRequest" rows="3"
+                    placeholder="Any special requests or notes for your order..."></textarea>
+            </div>
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
 
-    <a href="/cart">← Back to Cart</a>
+    <a href="/cart" class="navigation">← Back to Cart</a>
 </main>
 <%- include('../partials/footer') %>

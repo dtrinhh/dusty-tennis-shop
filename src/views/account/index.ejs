@@ -3,7 +3,7 @@
     <h1>My Account</h1>
 
     <!-- Profile Info -->
-    <div>
+    <div class="account-section">
         <h2>Profile</h2>
         <p><strong>Name:</strong> <%= user.name %></p>
         <p><strong>Email:</strong> <%= user.email %></p>
@@ -11,13 +11,13 @@
     </div>
 
     <!-- Order History -->
-    <div>
+    <div class="account-section">
         <h2>Order History</h2>
         <% if (orders.length === 0) { %>
             <p>You have not made any orders yet.</p>
         <% } else { %>
             <% orders.forEach(order => { %>
-                <div>
+                <div class="review">
                     <p><strong>Order #<%= order.id %></strong></p>
                     <p>Status: <%= order.status %></p>
                     <p>Total: $<%= order.totalPrice %></p>
@@ -32,13 +32,13 @@
     </div>
 
     <!-- Reviews -->
-    <div>
+    <div class="account-section">
         <h2>My Reviews</h2>
         <% if (reviews.length === 0) { %>
-            <p>You have not left any reviews yet. </p>
+            <p>You have not left any reviews yet.</p>
         <% } else { %>
             <% reviews.forEach(review => { %>
-                <div>
+                <div class="review">
                     <p><strong><a href="/products/<%= review.stringId %>"><%= review.stringBrand %> <%= review.stringName %></a></strong></p>
                     <p>Rating: <%= review.rating %> / 5</p>
                     <p><%= review.reviewText %></p>

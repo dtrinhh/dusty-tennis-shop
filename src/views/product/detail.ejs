@@ -1,5 +1,10 @@
 <%- include('../partials/header') %>
 <main>
+    <!-- Back button to return to all products page -->
+    <div class="navigation">
+        <p><a href="/products">&larr; Back to Strings</a></p>
+    </div>
+
     <!-- Heading of Brand and Name of string -->
     <div class="string-profile">
         <h1><%= string.brand %> <%= string.name %></h1>
@@ -25,6 +30,15 @@
         <% } %>
     </div>
 
+    <!-- Add to cart button -->
+    <% if (isLoggedIn) { %>
+        <form action="/cart/add/<%= string.id %>" method="POST">
+            <button type="submit">Add to Cart</button>
+        </form>
+    <% } else { %>
+        <p><a href="/login">Login</a> to add to cart.</p>
+    <% } %>
+
     <!-- String Reviews -->
     <div class="string-reviews">
         <h2>Reviews</h2>
@@ -32,7 +46,7 @@
             <p>No reviews yet. Be the first to leave one!</p>
         <% } else { %>
             <% reviews.forEach(review => { %>
-                <div>
+                <div class="review">
                     <p><strong><%= review.reviewerName %></strong></p>
                     <p>Rating: <%= review.rating %> / 5</p>
                     <p><%= review.reviewText %></p>
@@ -53,7 +67,7 @@
                         <div>
                             <h4>Responses from our team:</h4>
                             <% review.responses.forEach(response => { %>
-                                <div>
+                                <div class="review-response">
                                     <p><strong><%= response.responderName %></strong></p>
                                     <p><%= response.responseText %></p>
                                     <p><small><%= response.createdAt.toLocaleDateString() %></small></p>
@@ -88,20 +102,5 @@
             <p>Please <a href="/login">login</a> to leave a review.</p>
         <% } %>
     </div>
-
-    <!-- Add to cart button -->
-    <% if (isLoggedIn) { %>
-        <form action="/cart/add/<%= string.id %>" method="POST">
-            <button type="submit">Add to Cart</button>
-        </form>
-    <% } else { %>
-        <p><a href="/login">Login</a> to add to cart.</p>
-    <% } %>
-
-    <!-- Back button to return to all products page -->
-    <div class="navigation">
-        <p><a href="/products">&larr; Back to Strings</a></p>
-    </div>
-
 </main>
 <%- include('../partials/footer') %>

@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 <main>
     <!-- Greeting -->
-    <div>
+    <div class="hero">
         <h1>Welcome to Dusty Tennis Shop</h1>
         <p>Centerhub for all your tennis string needs.</p>
         <a href="/products">Shop All Strings</a>
@@ -10,9 +10,9 @@
     <!-- Newest strings section -->
     <div>
         <h2>New Arrivals</h2>
-        <div>
+        <div class="product-grid">
             <% newestStrings.forEach(string => { %>
-                <div>
+                <div class="product-card">
                     <h3><%= string.brand %> <%= string.name %></h3>
                     <p>Material: <%= string.material %></p>
                     <p>Price: $<%= string.price %></p>
@@ -25,9 +25,9 @@
     <!-- Random strings in "Try Out These Strings Next" section -->
     <div>
         <h2>Try Out These Strings Next</h2>
-        <div>
+        <div class="product-grid">
             <% randomStrings.forEach(string => { %>
-                <div>
+                <div class="product-card">
                     <h3><%= string.brand %> <%= string.name %></h3>
                     <p>Material: <%= string.material %></p>
                     <p>Price: $<%= string.price %></p>

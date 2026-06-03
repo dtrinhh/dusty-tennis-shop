@@ -1,31 +1,48 @@
 <%- include('../partials/header') %>
 <main>
-    <h1><%= title %></h1>
-    <a href="/admin/products">← Back to Products</a>
+    <a href="/admin/products" class="navigation">← Back to Products</a>
 
-    <form action="/admin/products/<%= string ? string.id + '/edit' : 'add' %>" method="POST">
-        <label for="brand">Brand</label>
-        <input type="text" id="brand" name="brand" value="<%= string ? string.brand : '' %>" required>
+    <div class="registration-form">
+        <h2><%= title %></h2>
 
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" value="<%= string ? string.name : '' %>" required>
+        <form action="/admin/products/<%= string ? string.id + '/edit' : 'add' %>" method="POST">
+            <div class="form-group">
+                <label for="brand">Brand</label>
+                <input type="text" id="brand" name="brand" value="<%= string ? string.brand : '' %>" required>
+            </div>
 
-        <label for="material">Material</label>
-        <input type="text" id="material" name="material" value="<%= string ? string.material : '' %>">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="<%= string ? string.name : '' %>" required>
+            </div>
 
-        <label for="color">Color</label>
-        <input type="text" id="color" name="color" value="<%= string ? string.color : '' %>">
+            <div class="form-group">
+                <label for="material">Material</label>
+                <input type="text" id="material" name="material" value="<%= string ? string.material : '' %>">
+            </div>
 
-        <label for="price">Price</label>
-        <input type="number" id="price" name="price" step="0.01" value="<%= string ? string.price : '' %>" required>
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input type="text" id="color" name="color" value="<%= string ? string.color : '' %>">
+            </div>
 
-        <label for="description">Description</label>
-        <textarea id="description" name="description" rows="4"><%= string ? string.description : '' %></textarea>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" step="0.01" value="<%= string ? string.price : '' %>" required>
+            </div>
 
-        <label for="stockQuantity">Stock Quantity</label>
-        <input type="number" id="stockQuantity" name="stockQuantity" value="<%= string ? string.stockQuantity : '' %>">
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4"><%= string ? string.description : '' %></textarea>
+            </div>
 
-        <button type="submit"><%= string ? 'Update Product' : 'Add Product' %></button>
-    </form>
+            <div class="form-group">
+                <label for="stockQuantity">Stock Quantity</label>
+                <input type="number" id="stockQuantity" name="stockQuantity" value="<%= string ? string.stockQuantity : '' %>">
+            </div>
+
+            <button type="submit"><%= string ? 'Update Product' : 'Add Product' %></button>
+        </form>
+    </div>
 </main>
 <%- include('../partials/footer') %>

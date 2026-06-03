@@ -3,25 +3,24 @@
     <h1>Our Strings</h1>
 
     <!-- Sorting options -->
-    <div>
+    <div class="sort-options">
         <span>Sort by: </span>
-        <a href="/products?sort=brand">Brand</a> |
-        <a href="/products?sort=name">Name</a> |
-        <a href="/products?sort=price">Price</a>
+        <a href="/products?sort=brand" class="<%= sortBy === 'brand' ? 'active' : '' %>">Brand</a>
+        <a href="/products?sort=name" class="<%= sortBy === 'name' ? 'active' : '' %>">Name</a>
+        <a href="/products?sort=price" class="<%= sortBy === 'price' ? 'active' : '' %>">Price</a>
     </div>
 
     <!-- Product list -->
-    <div>
+    <div class="string-list">
         <% if (strings.length === 0) { %>
             <p>No strings found.</p>
         <% } else { %>
             <% strings.forEach(string => { %>
-                <div>
-                    <h2><%= string.brand %> <%= string.name %></h2>
-                    <p>Material: <%= string.material %></p>
-                    <p>Color: <%= string.color %></p>
+                <div class="string-card">
+                    <h3><%= string.brand %> <%= string.name %></h3>
+                    <p class="string-material">Material: <%= string.material %> | Color: <%= string.color %></p>
                     <p>Price: $<%= string.price %></p>
-                    <p>Description: <%= string.description %></p>
+                    <p class="string-description"><%= string.description %></p>
                     <a href="/products/<%= string.id %>">View Details</a>
                 </div>
             <% }) %>

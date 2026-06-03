@@ -1,17 +1,25 @@
 <%- include('../../partials/header') %>
 <main>
-    <h1>Login</h1>
+    <div class="login-form">
+        <h2>Login</h2>
 
-    <form action="/login" method="POST">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter email" required>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter email" required>
+            </div>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" minlength="8" placeholder="Enter password" required>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" minlength="8" placeholder="Enter password" required>
+            </div>
 
-        <button type="submit">Login</button>
-    </form>
+            <button type="submit">Login</button>
+        </form>
 
-    <p>Don't have an account? <a href="/register">Sign up for account here</a></p>
+        <div class="form-footer">
+            <p>Don't have an account? <a href="/register">Sign up for account here</a></p>
+        </div>
+    </div>
 </main>
 <%- include('../../partials/footer') %>
