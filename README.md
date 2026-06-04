@@ -7,7 +7,7 @@ Dusty Tennis Shop is a online marketplace and community for consumer tennis stri
 ## 2. Database Schema
 ERD from PGAdmin showing the tables and relationships between each other for this project:
 
-![dusty_tennis_shop ERD](<img width="1181" height="1537" alt="dusty_tennis_shop_erd" src="https://github.com/user-attachments/assets/161131f2-e81b-48ec-9986-f2d619b87c58" />)
+![dusty_tennis_shop ERD](<img width="905" height="1429" alt="dustytennisshopERD" src="https://github.com/user-attachments/assets/4752a766-6d4f-4711-bcb2-7f7355c5396e" />)
 
 ## 3. User Roles
 ### Administrator
